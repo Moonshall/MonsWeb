@@ -159,12 +159,12 @@ class Particle {
     }
 }
 
-// Mouse move effect dengan partikel
-document.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.95 && particles.length < maxParticles) {
-        particles.push(new Particle(e.clientX, e.clientY));
-    }
-});
+// Mouse move effect dengan partikel - DISABLED for performance
+// document.addEventListener('mousemove', (e) => {
+//     if (Math.random() > 0.95 && particles.length < maxParticles) {
+//         particles.push(new Particle(e.clientX, e.clientY));
+//     }
+// });
 
 // Button hover effect dengan ripple
 document.querySelectorAll('.btn').forEach(button => {
@@ -205,7 +205,8 @@ if (titleElement) {
 // Enhanced star generation dengan efek kelap kelip merah yang indah
 const starsContainer = document.getElementById('stars');
 
-for (let i = 0; i < 200; i++) {
+if (starsContainer) {
+for (let i = 0; i < 100; i++) {
     const star = document.createElement('div');
     star.className = 'star';
     star.style.left = Math.random() * 100 + '%';
@@ -222,15 +223,16 @@ for (let i = 0; i < 200; i++) {
     
     starsContainer.appendChild(star);
 }
-
-// Logo rotation on scroll
-const logoMain = document.querySelector('.logo-main');
-if (logoMain) {
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        logoMain.style.transform = `rotate(${scrolled * 0.1}deg)`;
-    });
 }
+
+// Logo rotation on scroll - DISABLED for performance
+// const logoMain = document.querySelector('.logo-main');
+// if (logoMain) {
+//     window.addEventListener('scroll', () => {
+//         const scrolled = window.pageYOffset;
+//         logoMain.style.transform = `rotate(${scrolled * 0.1}deg)`;
+//     });
+// }
 
 // Loading animation
 window.addEventListener('load', () => {
