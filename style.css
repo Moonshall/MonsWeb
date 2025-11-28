@@ -1650,8 +1650,7 @@ nav {
         position: absolute;
         top: 100%;
         right: -100%;
-        width: calc(100vw - 2rem);
-        max-width: 400px;
+        width: 280px;
         background: linear-gradient(180deg, 
             rgba(26, 26, 29, 0.98) 0%, 
             rgba(20, 20, 23, 0.98) 50%,
@@ -1677,7 +1676,7 @@ nav {
 
     .nav-center-oval.active {
         display: flex !important;
-        right: 0;
+        right: 1rem;
         opacity: 1;
         pointer-events: all;
     }
