@@ -1,3 +1,28 @@
+// Loading Screen Animation
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    const loadingProgress = document.getElementById('loadingProgress');
+    
+    // Simulate loading progress
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 30;
+        if (progress > 100) progress = 100;
+        
+        loadingProgress.style.width = progress + '%';
+        
+        if (progress === 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                }, 600);
+            }, 300);
+        }
+    }, 150);
+});
+
 // Page navigation system
 let currentPage = 'home';
 
