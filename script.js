@@ -1,3 +1,37 @@
+// Set flag untuk navigasi sebelum halaman di-load
+document.addEventListener('DOMContentLoaded', function() {
+    // Tambahkan event listener ke semua link navigasi
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+        link.addEventListener('click', function() {
+            sessionStorage.setItem('navigated', 'true');
+        });
+    });
+});
+
+// Loading Screen Animation - hanya untuk refresh, tidak untuk navigasi
+window.addEventListener('load', function() {
+    const loadingScreen = document.getElementById('loadingScreen');
+    
+    // Cek apakah ini adalah refresh atau navigasi dari halaman lain
+    const isPageRefresh = !sessionStorage.getItem('navigated');
+    
+    if (loadingScreen) {
+        if (isPageRefresh) {
+            // Tampilkan loading screen untuk refresh
+            setTimeout(() => {
+                loadingScreen.classList.add('fade-out');
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    sessionStorage.setItem('navigated', 'true');
+                }, 600);
+            }, 2500);
+        } else {
+            // Langsung sembunyikan untuk navigasi
+            loadingScreen.style.display = 'none';
+        }
+    }
+});
+
 // Page navigation system
 let currentPage = 'home';
 
